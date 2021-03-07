@@ -1,0 +1,80 @@
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #222;
+  color: #eee;
+}
+
+a {
+  text-decoration: none;
+  color: #eee;
+}
+
+#tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+#tags div {
+  color: #999;
+  padding: 2px 7px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  margin-right: 7px;
+}
+
+#back {
+  border: 1px solid #999;
+  color: #999;
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 5px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h2 {
+  margin-bottom: 2px;
+}
+
+h3 {
+  margin-bottom: 0;
+}
+
+ul {
+  list-style: "- ";
+  padding: 10px;
+  margin: 0;
+}
+ul li {
+  margin: 0 3px;
+  padding: 3px;
+}
+
+ol {
+  list-style: none;
+  counter-reset: item;
+}
+ol li {
+  display: block;
+  padding: 3px 0;
+  color: #eee;
+}
+ol li:before {
+  content: counter(item);
+  counter-increment: item;
+  color: #999;
+  width: 1em;
+  margin-left: -1.5em;
+  margin-right: 0.5em;
+  text-align: right;
+  direction: rtl;
+}
+
+p > a {
+  color: #99f;
+}
+
+/*# sourceMappingURL=recipe.css.map */

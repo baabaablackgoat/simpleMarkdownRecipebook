@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<meta property='og:title' content='Rezeptbuch' />
+		<meta property='og:author' content='baa baa black goat' />
+		<meta property='og:image' content='https://baabaablackgoat.com/projects/recipes/res/Bunger.webp' />
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="HandheldFriendly" content="true">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
+		<link rel='icon' href='res/Bunger.webp'>
+		<title>Rezeptbuch</title>
+		<link rel='stylesheet' href='index.css'>
+	</head>
+	<body>
+		<h1>Rezeptbuch</h1>
+		<header>
+			<input type='text' id='searchbar' onkeyup='applyFilter()' onClick='clearSearch()' placeholder='Nach Name oder Tag suchen...'>
+		</header>
+		<main>
+			<noscript>JavaScript konnte nicht geladen werden - bitte NoScript-Addons deaktivieren, sonst funktioniert das hier nicht!</noscript>
+			<ul id='recipeList'></ul>
+		</main>
+
+		<script src='recipes.js'></script>
+		<script src='index.js'></script>
+	</body>
+</html>
