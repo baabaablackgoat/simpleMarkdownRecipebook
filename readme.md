@@ -25,7 +25,6 @@ Ein Rezept sollte möglichst wie folgt aussehen:
 [beliebiges Markdown zur Rezeptgestaltung]
 ```
 
-Um die Rezeptliste vollständig zu aktualisieren, reicht es, `convert.py` und `generateList.py` ohne Argumente auszuführen.
-Um nur einzelne Rezepte zu aktualisieren, kann `convert.py` mit den Dateinamen (nicht dem vollst. Pfad) aufgerufen werden. `generateList.py` sollte dennoch vollständig aufgerufen werden.
-Dieses Verhalten wird wahrscheinlich bald in eine einzige Python-Datei zusammengeführt.
-
+Um die Rezeptliste vollständig zu aktualisieren, reicht es, `make.py` ohne Argumente auszuführen.
+Um nur einzelne Rezepte zu aktualisieren, kann `make.py` mit den Dateinamen (nicht dem vollst. Pfad) aufgerufen werden.
+Es ist noch möglich die Subskripte selbst auszuführen, auch wenns nicht empfohlen ist.
