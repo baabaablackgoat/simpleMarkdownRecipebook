@@ -111,7 +111,7 @@ Rezepte, die du erstellst, sollten diesem Design folgen:
 # Rezeptname
 ## Tags: tag1, tag2, tag3...
 
-[beliebiges markdown2-lesbarer Text]
+[beliebiger markdown2-lesbarer Text]
 ```
 
 Sobald du mit deinen Rezepten zufrieden bist, benutze `make.py` um deine kompilierten Dateien upzudaten.
