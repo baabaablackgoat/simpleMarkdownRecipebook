@@ -1,7 +1,7 @@
 import getopt, sys
 from generateList import generateList
 from convert import convert
-from termcolor import colored
+from termColors import termColors
 
 def showHelp():
 	helpText = """Converts .md files into modified .html files for your recipe book.
@@ -36,10 +36,10 @@ def main():
 	flagtext = ""
 	for flag in flags:
 		if flags[flag]:
-			flagtext = flagtext + colored(flag + " ", 'grey')
+			flagtext = flagtext + termColors.gray + flag + " " + termColors.r
 
 
-	print(colored('Make script initiated. ', 'cyan') + flagtext)
+	print(termColors.cyan + 'Make script initiated. '+ termColors.r + flagtext)
 	if (len(args) > 0):
 		try:
 			print('Attempting to convert %d file(s)...' % (len(args)))
@@ -50,14 +50,14 @@ def main():
 			sys.exit(2)
 	else:
 		if (flags['force']):
-			print(colored('Force flag was set. ', 'yellow') + 'Attempting to convert *all* files in /recipes. This may take a moment.')
+			print(termColors.warn + 'Force flag was set. '+ termColors.r + 'Attempting to convert *all* files in /recipes. This may take a moment.')
 		else:
 			print('Checking for updates to *all* files in /recipes. This may take a moment.')
 		convert(flags)
 
 	print('Generating new recipes.js list...')
 	generateList()
-	print(colored('Make script has finished.', 'cyan'))
+	print(termColors.cyan + 'Make script has finished.' + termColors.r)
 
 
 if __name__ == "__main__":

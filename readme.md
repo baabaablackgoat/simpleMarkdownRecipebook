@@ -8,7 +8,7 @@ Clone or download the repository.
 
 Optionally, modify the files to customize the recipe book to your liking (will hopefully be made easier in a later commit)
 
-Install the python modules [markdown2](https://pypi.org/project/markdown2/) and if you haven't yet, [termcolor](https://pypi.org/project/termcolor/) (soon to be optional, see Issue #6).
+Install the python modules [markdown2](https://pypi.org/project/markdown2/)
 
 Create your own .md recipes in the /recipes folder - see section below on how to do that, and run the `make.py` script.
 
@@ -68,7 +68,7 @@ Klone oder lade das Repository herunter.
 
 Optional: Bearbeite die Dateien, um das Rezeptbuch selbst umzugestalten. (Wird hoffentlich in einer späteren Version vereinfacht.)
 
-Installiere die Python-Module [markdown2](https://pypi.org/project/markdown2/) und falls du es noch nicht hast, [termcolor](https://pypi.org/project/termcolor/) (bald optional, siehe Issue #6).
+Installiere die Python-Module [markdown2](https://pypi.org/project/markdown2/).
 
 Erstelle deine eigenen Rezepte als .md-Dateien im `/recipes`-Ordner (siehe unten), und konvertiere sie mit dem `make.py` Skript.
 

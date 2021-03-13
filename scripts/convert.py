@@ -1,5 +1,5 @@
 from markdown2 import Markdown
-from termcolor import colored
+from termColors import termColors
 import os, sys
 markdown = Markdown()
 recipeFolder = os.path.join(os.path.dirname(__file__), '../recipes')
@@ -45,14 +45,14 @@ def createHTML(el, flags):
 			out[0].replace('<h1>', '<h1 id="title">')
 			localHeader = header.replace('[TITLE]', lines[0][1:].strip())
 		else:
-			print(colored('No title line found for '+ el), 'yellow')
+			print(termColors.warn + 'No title line found for '+ el + termColors.r)
 			localHeader = header
 
 		if len(lines) >= 2 and lines[1].startswith('## Tags:'):
 			tags = [tag.strip() for tag in lines[1][8:].split(',')]
 			out[1] = '<div id="tags">'+ ''.join(['<a href="../index.html?q=%s"><div>%s</div></a>' % (tag,tag) for tag in tags]) + '</div>'
 		else:
-			print(colored('No tags line found for '+ el), 'yellow')
+			print(termColors.warn + 'No tags line found for '+ el + termColors.r)
 
 		out.insert(0, localHeader)
 		out.append(footer)
@@ -62,7 +62,7 @@ def createHTML(el, flags):
 
 		if flags['verbose']:
 			if isNewRecipe:
-				print(colored('+ ' + el, 'green'))
+				print(termColors.ok + '+ ' + el + termColors.r)
 			else:
 				print('* ' + el)
 
