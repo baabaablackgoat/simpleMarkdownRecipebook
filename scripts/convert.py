@@ -12,6 +12,10 @@ header = """<!DOCTYPE html><html>
 	<meta name="HandheldFriendly" content="true">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+	<link rel='icon' href='../res/recipeIcon.png'>
+	<title>[TITLE] - Rezeptbuch</title>
+	<meta property='og:title' content='[TITLE] - Rezeptbuch'>
+	<meta property='og:image' content='https://baabaablackgoat.com/projects/recipes/res/recipeIcon.png'>
 </head>
 <body>
 <a href="../index.html"><div id="back">Zurück</div></a>\n"""
@@ -39,8 +43,10 @@ def createHTML(el, flags):
 
 		if len(lines) >= 1 and lines[0].startswith('#'):
 			out[0].replace('<h1>', '<h1 id="title">')
+			localHeader = header.replace('[TITLE]', lines[0][1:].strip())
 		else:
 			print(colored('No title line found for '+ el), 'yellow')
+			localHeader = header
 
 		if len(lines) >= 2 and lines[1].startswith('## Tags:'):
 			tags = [tag.strip() for tag in lines[1][8:].split(',')]
@@ -48,7 +54,7 @@ def createHTML(el, flags):
 		else:
 			print(colored('No tags line found for '+ el), 'yellow')
 
-		out.insert(0, header)
+		out.insert(0, localHeader)
 		out.append(footer)
 		
 		with open(targetPath, 'w', encoding='utf-8') as o:
