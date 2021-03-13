@@ -4,7 +4,17 @@ from convert import convert
 from termcolor import colored
 
 def showHelp():
-	print("Refer to https://youtu.be/8veTn8YZ0_E (still WIP sorry)")
+	helpText = """Converts .md files into modified .html files for your recipe book.
+Usage: python make.py [options] [file1.md ...]
+	Options:
+	--force (-f): Forces any existing recipe to be re-compiled, even if deemed unnecessary.
+	--verbose (-v): Causes the compiler to print more information about it's progress.
+	--help: Displays this help text.
+
+	If no filenames are supplied, then the script will assume that you want to check all available files in /recipes for changes.
+	If you supply one or more filenames, do NOT supply the full path to them - instead, only use their file name as it is named in your /recipes folder (eg. 'coffee.md')
+"""
+	print(helpText)
 
 def main():
 	try:
@@ -36,6 +46,8 @@ def main():
 			convert(flags, args)
 		except (AttributeError, ValueError):
 			print("Something went wrong. Make sure you don't supply the full path to .md files, only the file itself!")
+			showHelp()
+			sys.exit(2)
 	else:
 		if (flags['force']):
 			print(colored('Force flag was set. ', 'yellow') + 'Attempting to convert *all* files in /recipes. This may take a moment.')
