@@ -27,4 +27,6 @@ Ein Rezept sollte möglichst wie folgt aussehen:
 
 Um die Rezeptliste vollständig zu aktualisieren, reicht es, `make.py` ohne Argumente auszuführen.
 Um nur einzelne Rezepte zu aktualisieren, kann `make.py` mit den Dateinamen (nicht dem vollst. Pfad) aufgerufen werden.
-Es ist noch möglich die Subskripte selbst auszuführen, auch wenns nicht empfohlen ist.
+
+`make.py` unterstützt aktuell die Flags `-v` (verbose) und `-f` (force - ignoriert Erstell-/Updatezeitpunkte).
+Dokumentation in der CLI wird in einem kommenden Commit hinzugefügt.

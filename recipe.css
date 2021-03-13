@@ -73,7 +73,7 @@ ol li:before {
   direction: rtl;
 }
 
-p > a {
+p > a, ul > a, li > a {
   color: #99f;
 }
 

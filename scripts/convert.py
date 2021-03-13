@@ -1,4 +1,5 @@
 from markdown2 import Markdown
+from termcolor import colored
 import os, sys
 markdown = Markdown()
 recipeFolder = os.path.join(os.path.dirname(__file__), '../recipes')
@@ -16,11 +17,21 @@ header = """<!DOCTYPE html><html>
 <a href="../index.html"><div id="back">Zurück</div></a>\n"""
 footer = '</body></html>'
 
-def createHTML(el):
+
+def createHTML(el, flags):
 	if not el.endswith('.md'):
 		return
-	target = os.path.join(recipeFolder, el)
-	with open(target, 'r', encoding='utf-8') as f:
+
+	recipePath = os.path.join(recipeFolder, el)
+	targetPath = os.path.join(targetFolder, el[:-3] + '.html')
+	isNewRecipe = not os.path.isfile(targetPath)
+
+	if (not flags['force'] and not isNewRecipe and os.path.getmtime(targetPath) >= os.path.getmtime(recipePath)):
+		if flags['verbose']:
+			print('Recipe %s doesn\'t need to be updated (force with --force)' % el)
+		return
+
+	with open(recipePath, 'r', encoding='utf-8') as f:
 		lines = f.readlines()
 		restOfRecipe = ''.join(lines[2:])
 		out = [markdown.convert(line) for line in lines[:2]]
@@ -29,34 +40,35 @@ def createHTML(el):
 		if len(lines) >= 1 and lines[0].startswith('#'):
 			out[0].replace('<h1>', '<h1 id="title">')
 		else:
-			print('No title line found for '+ el)
+			print(colored('No title line found for '+ el), 'yellow')
 
 		if len(lines) >= 2 and lines[1].startswith('## Tags:'):
 			tags = [tag.strip() for tag in lines[1][8:].split(',')]
 			out[1] = '<div id="tags">'+ ''.join(['<a href="../index.html?q=%s"><div>%s</div></a>' % (tag,tag) for tag in tags]) + '</div>'
 		else:
-			print('No tags line found for '+ el)
+			print(colored('No tags line found for '+ el), 'yellow')
 
 		out.insert(0, header)
 		out.append(footer)
 		
-		with open(os.path.join(targetFolder, el[:-3] + '.html'), 'w', encoding='utf-8') as o:
+		with open(targetPath, 'w', encoding='utf-8') as o:
 			o.write(''.join(out))
 
-def convert(*args):
+		if flags['verbose']:
+			if isNewRecipe:
+				print(colored('+ ' + el, 'green'))
+			else:
+				print('* ' + el)
+
+def convert(flags, *args):
 	if args:
 		for el in args[0]:
-			createHTML(el)
+			createHTML(el, flags)
 	else:
 		for el in os.listdir(recipeFolder):
-			createHTML(el)
+			createHTML(el, flags)
+
 
 if __name__ == '__main__':
-	if (len(sys.argv) > 1):
-		convert(sys.argv[1:])
-	else:
-		convert()
-		
-
-			
-			
+	print("Please use the make script to compile your recipes.")
+	sys.exit(2)

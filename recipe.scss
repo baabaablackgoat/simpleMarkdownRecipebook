@@ -76,6 +76,6 @@ ol {
 	}
 }
 
-p > a {
+p > a, ul > a, li > a {
 	color: $linkcolor;
 }
