@@ -8,7 +8,7 @@ def showHelp():
 
 def main():
 	try:
-		opts, args = getopt.getopt(sys.argv[1:], "fv", ["--force", "--verbose", "--help"])
+		opts, args = getopt.getopt(sys.argv[1:], "fv", ["force", "verbose", "help"])
 	except getopt.GetoptError as e:
 		print(e)
 		sys.exit(2)
