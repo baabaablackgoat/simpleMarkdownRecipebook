@@ -2,7 +2,7 @@
 ## Tags: fruchtig, herzhaft, Huhn
 
 ## Zutaten
-- Hühnerbrust (~ 2 Packungen)
+- 4 Hühnerbrustfilets (in der Regel ~ 2 Packungen)
 - 3 Eier
 - 50g Maismehl/stärke
 - 50g Mehl

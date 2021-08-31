@@ -24,7 +24,7 @@ footer = '</body></html>'
 
 def createHTML(el, flags):
 	if not el.endswith('.md'):
-		return
+		return False
 
 	recipePath = os.path.join(recipeFolder, el)
 	targetPath = os.path.join(targetFolder, el[:-3] + '.html')
@@ -33,7 +33,7 @@ def createHTML(el, flags):
 	if (not flags['force'] and not isNewRecipe and os.path.getmtime(targetPath) >= os.path.getmtime(recipePath)):
 		if flags['verbose']:
 			print('Recipe %s doesn\'t need to be updated (force with --force)' % el)
-		return
+		return False
 
 	with open(recipePath, 'r', encoding='utf-8') as f:
 		lines = f.readlines()
@@ -65,14 +65,21 @@ def createHTML(el, flags):
 				print(termColors.ok + '+ ' + el + termColors.r)
 			else:
 				print('* ' + el)
+		return True
 
 def convert(flags, *args):
+	successfulCount = 0
 	if args:
 		for el in args[0]:
-			createHTML(el, flags)
+			if (createHTML(el, flags)):
+				successfulCount += 1
+			
 	else:
 		for el in os.listdir(recipeFolder):
-			createHTML(el, flags)
+			if (createHTML(el, flags)):
+				successfulCount += 1
+	
+	return successfulCount
 
 
 if __name__ == '__main__':

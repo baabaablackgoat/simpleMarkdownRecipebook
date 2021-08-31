@@ -1,6 +1,8 @@
 import os, json
+from termColors import termColors
 
 def generateList():
+	print('Generating new recipes.js list...')
 	recipeFolder = os.path.join(os.path.dirname(__file__), '../recipes')
 	recipeList = {}
 

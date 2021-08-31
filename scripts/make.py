@@ -40,10 +40,11 @@ def main():
 
 
 	print(termColors.cyan + 'Make script initiated. '+ termColors.r + flagtext)
+	converted = 0
 	if (len(args) > 0):
 		try:
 			print('Attempting to convert %d file(s)...' % (len(args)))
-			convert(flags, args)
+			converted = convert(flags, args)
 		except (AttributeError, ValueError):
 			print("Something went wrong. Make sure you don't supply the full path to .md files, only the file itself!")
 			showHelp()
@@ -53,10 +54,15 @@ def main():
 			print(termColors.warn + 'Force flag was set. '+ termColors.r + 'Attempting to convert *all* files in /recipes. This may take a moment.')
 		else:
 			print('Checking for updates to *all* files in /recipes. This may take a moment.')
-		convert(flags)
+		converted = convert(flags)
+	
+	if (converted > 0):
+		print(termColors.ok + ('%d recipes have been created/updated.' % converted) + termColors.r)
+		generateList()
+	else:
+		print(termColors.warn + 'No recipes have been created/updated.' + (' Consider using the --force flag if you believe this to be in error.' if not flags['force'] else '')  + termColors.r)
+	
 
-	print('Generating new recipes.js list...')
-	generateList()
 	print(termColors.cyan + 'Make script has finished.' + termColors.r)
 
 
