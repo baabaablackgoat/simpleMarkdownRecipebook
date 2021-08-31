@@ -1,0 +1,57 @@
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #222;
+  color: #eee;
+}
+
+a {
+  text-decoration: none;
+  color: #eee;
+}
+
+.formSeparator {
+  margin-bottom: 15px;
+}
+.formSeparator label {
+  padding: 0 0 10px;
+  font-size: 1.2em;
+  margin-right: 10px;
+}
+.formSeparator input, .formSeparator textarea {
+  font-family: "Roboto", sans-serif;
+  padding: 7px;
+  margin-top: 3px;
+  min-width: 300px;
+  background-color: #222;
+  color: #eee;
+  border: 1px solid #999;
+  border-radius: 5px;
+}
+.formSeparator input:invalid, .formSeparator textarea:invalid {
+  border: 1px solid #922;
+}
+.formSeparator input:invalid:after, .formSeparator textarea:invalid:after {
+  /* If you have a Font Awesome subscription, you can use this. Add your kit to the head of creator.html as you usually would. */
+  content: '<i class="fa-duotone fa-triangle-exclamation"></i>';
+}
+
+button {
+  background-color: #222;
+  color: #eee;
+  border: 2px solid #999;
+  font-size: 1.5em;
+  border-radius: 3px;
+  padding: 10px 20px;
+}
+
+.disabled {
+  color: #666;
+  border: 2px solid #333;
+  cursor: not-allowed;
+}
+
+#hiddenLink {
+  display: none;
+}
+
+/*# sourceMappingURL=creator.css.map */

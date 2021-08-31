@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property='og:title' content='Rezept-Erstell-Helfer für Markdown-Rezeptbuch' />
+    <meta property='og:author' content='baa baa black goat' />
+    <meta property='og:image' content='https://baabaablackgoat.com/projects/recipes/res/recipeIcon.png' />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="creator.css" type="text/css">
+    <!-- Got a Font Awesome Kit? Put it here. -->
+    <title>Rezeptersteller</title>
+</head>
+<body>
+    <h1>Markdown-Rezept Generator</h1>
+    <div class='formSeparator'>
+        <label for='recipeTitle'>Rezepttitel</label><br>
+        <input type='text' name='recipeTitle' id='recipeTitle' minlength='1' required>
+    </div>
+    <div class="formSeparator">
+        <label for='tags'>Gewünschte Tags (Komma-getrennt)</label><br>
+        <input type='text' name='tags' id='tags' minlength='1' placeholder='einfach, Zitrone, ...' required>
+    </div>
+    <div class="formSeparator">
+        <label for='amount'>Reicht für...</label><br>
+        <input type='text' name='amount' id='amount' minlength='1' placeholder='3 Personen' required>
+    </div>
+    <div class="formSeparator">
+        <label for='ingredients'>Zutaten (jede Zeile eine Zutat)</label><br>
+        <textarea name='ingredients' id='ingredients' cols='75' rows='10' minlength='1' spellcheck="false" placeholder='300g Mehl&#10;150g Zucker&#10;2TL Salz&#10;&#10;Dieses Textfeld _unterstützt_ **Markdown**' required></textarea>
+    </div>
+    <div class="formSeparator">
+        <label for='steps'>Schritte (jede Zeile ein seperater Schritt)</label><br>
+        <textarea name='steps' id='steps' cols='100' rows='15' minlength='1' spellcheck="false" placeholder='Mehl und Zucker in einer großen Schüssel vermengen.&#10;Das Salz vorsichtig unterheben.&#10;Bei 200°C im Ofen für 20min backen.&#10;&#10;Dieses Textfeld _unterstützt_ **Markdown**' required></textarea>
+    </div>
+
+    <button onclick='generateRecipe()' id='generateButton' class='disabled'>Rezept erzeugen</button>
+    <script src='creator.js'></script>
+
+    <a id='hiddenLink' href=''></a>
+</body>
+</html>
